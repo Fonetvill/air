@@ -39,13 +39,9 @@ namespace main
                 LogUser = aut.Log;
             }
         }
-
-        
-
         private void ticket_btn_Click(object sender, EventArgs e)
         {
             if (PassId != 0)
-
             {
                 aut.Ticket tik = new aut.Ticket(PassId);
                 tik.Show();
@@ -106,8 +102,6 @@ namespace main
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
-
-
             }
         }
 
@@ -120,11 +114,9 @@ namespace main
         private void history_Click(object sender, EventArgs e)
         {
             if (PassId != 0)
-
             {
                 aut.history his = new aut.history(PassId);
                 his.ShowDialog();
-
             }
             else
             {

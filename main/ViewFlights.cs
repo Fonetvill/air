@@ -18,78 +18,40 @@ namespace main
             InitializeComponent();
         }
         private DataGridViewColumn col;
-        private void flightsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.flightsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.airDataSet);
-
-        }
-
         private void ViewFlights_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "airDataSet.Flights". При необходимости она может быть перемещена или удалена.
             this.flightsTableAdapter.Fill(this.airDataSet.Flights);
-
-            var rows = flightsDataGridView.SelectedRows;
-            flightsDataGridView.CurrentCell = null;
-            foreach (DataGridViewRow r in rows)
-                r.Visible = false;
-
             flightsBindingSource.Filter = "";
             flightNumberComboBox.Text = "Все";
             departureAirportComboBox.Text = "Все";
             arrivalAirportComboBox.Text = "Все";
         }
-
         private void flightNumberComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (flightNumberComboBox.Text != "Все")
-            {
-               
-            }
         }
-
         private void departureAirportComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (flightNumberComboBox.Text != "Все")
-            //{
-            //    flightsBindingSource.Filter = "DepartureAirport='" + departureAirportComboBox.SelectedItem.ToString() + "'";
-            //}
         }
-
-       
-
         private void arrivalAirportComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (flightNumberComboBox.Text != "Все")
-            //{
-            //    flightsBindingSource.Filter = "ArrivalAirport  ='" + arrivalAirportComboBox.SelectedItem.ToString() + "'";
-            //}
         }
-
         private void FilterBtn_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(Connection.con);
             try
             {
                 conn.Open();
-
                 string flightNumber = flightNumberComboBox.SelectedItem.ToString();
                 string departureAirport = departureAirportComboBox.SelectedItem.ToString();
                 string arrivalAirport = arrivalAirportComboBox.SelectedItem.ToString();
-
                 string query = "SELECT * FROM [dbo].[Flights] WHERE 1 = 1";
-
                 if (flightNumber != "Все")
                     query += " AND FlightNumber = '" + flightNumber + "'";
-
                 if (departureAirport != "Все")
                     query += " AND DepartureAirport = '" + departureAirport + "'";
-
                 if (arrivalAirport != "Все")
                     query += " AND ArrivalAirport = '" + arrivalAirport + "'";
-
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
@@ -103,10 +65,7 @@ namespace main
             {
                 conn.Close();
             }
-
-
         }
-       
         private void CancellBtn_Click(object sender, EventArgs e)
         {
             flightNumberComboBox.SelectedItem = null;
@@ -118,7 +77,6 @@ namespace main
             flightsBindingSource.Filter ="";
             radioButton1.Checked = false;
             radioButton2.Checked = false;
-            
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

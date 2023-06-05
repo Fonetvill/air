@@ -283,11 +283,14 @@ namespace main
             this.arrivalAirportComboBox.FormattingEnabled = true;
             this.arrivalAirportComboBox.Items.AddRange(new object[] {
             "Все",
-            "San Francisco",
-            "Dubai",
+            "Chicago",
+            "Singapore",
             "Sydney",
+            "Melbourne",
             "New York",
+            "Los Angeles",
             "London",
+            "Paris",
             "Tokyo"});
             this.arrivalAirportComboBox.Location = new System.Drawing.Point(487, 19);
             this.arrivalAirportComboBox.Name = "arrivalAirportComboBox";

@@ -88,29 +88,6 @@ namespace main.aut
                 isLoaded = true;
             }
         }
-
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-            // TODO: Implement scrollbar functionality
-        }
-
-        private void bookingsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bookingsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.airDataSet);
-        }
-
-        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
-        {
-            // TODO: Implement navigation functionality
-        }
-
-        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
-        {
-            // TODO: Implement navigation functionality
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -135,7 +112,6 @@ namespace main.aut
                         deleteCommand.Parameters.AddWithValue("@BookingId", bookingId);
                         deleteCommand.ExecuteNonQuery();
                     }
-
                     // Удалите выбранную строку из DataGridView
                     dataGridView1.Rows.RemoveAt(selectedIndex);
                 }

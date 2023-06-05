@@ -49,7 +49,6 @@ namespace main.aut
                             if (reader1.Read())
                             {
                                 name = (string)reader1["FirstName"] + " " + (string)reader1["LastName"];
-                               
                             }
                             else
                             {
@@ -66,12 +65,10 @@ namespace main.aut
                         Log = LogTxt.Text;
                         this.Hide();
                     }
-
                     else
                     {
                         MessageBox.Show("Не верный логин и пароль!", "Авторизация", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -113,7 +110,6 @@ namespace main.aut
                             linkLabel1.Visible = true;
                             LogTxt.Text = "";
                             PassTxt.Text = "";
-
                         }
                         else
                         {
@@ -121,7 +117,6 @@ namespace main.aut
                             MessageBox.Show("Ошибка при создании аккаунта.");
                         }
                     }
-
                 }
                 catch
                 {
@@ -129,14 +124,12 @@ namespace main.aut
                 }
             }
         }
-
         private void authorization_Load(object sender, EventArgs e)
         {
             EmailTxt.Visible = false;
             label3.Visible = false;
             label4.Visible = false;
         }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (linkLabel1.Text == "Нету аккаунта ?")

@@ -21,21 +21,12 @@ namespace main
             flightsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.passengerId = passengerId;
         }
-
-        private void passengersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.passengersBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.airoportDataSet1);
-        }
-
         private void Registration_Load(object sender, EventArgs e)
         {
             this.flightsTableAdapter.Fill(this.airDataSet.Flights);
             this.bookingsTableAdapter.Fill(this.airDataSet.Bookings);
             SqlConnection conn = new SqlConnection(Connection.con);
         }
-
         private void RegBtn_Click(object sender, EventArgs e)
         {
             if (flightsDataGridView.SelectedRows.Count > 0)
@@ -51,7 +42,6 @@ namespace main
                     MessageBox.Show("Пассажир уже зарегистрирован на выбранный рейс.");
                     return;
                 }
-
                 // Получите пассажира из выбранной строки
                 DataRowView selectedPassenger = (DataRowView)passengersBindingSource.Current;
                 // Показать подтверждающий диалог перед регистрацией
@@ -70,7 +60,6 @@ namespace main
                         insertCommand.Parameters.AddWithValue("@FlightId", flightId);
                         insertCommand.ExecuteNonQuery();
                     }
-
                     MessageBox.Show("Пассажир успешно зарегистрирован на выбранный рейс!");
                 }
             }
@@ -79,14 +68,10 @@ namespace main
                 MessageBox.Show("Выберите рейс из списка.");
             }
         }
-
-
         private bool IsPassengerRegistered(int flightId)
         {
-
             // Получение пассажира из выбранной строки
             DataRowView selectedPassenger = (DataRowView)passengersBindingSource.Current;
-
             using (SqlConnection conn = new SqlConnection(Connection.con))
             {
                 conn.Open();
@@ -98,7 +83,6 @@ namespace main
                 return count > 0;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

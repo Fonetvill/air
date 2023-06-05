@@ -21,14 +21,6 @@ namespace main.aut
             InitializeComponent();
             this.passengerId = passengerId;
         }
-
-        private void flightsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.flightsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.airDataSet);
-        }
-
         private void history_Load(object sender, EventArgs e)
         {
             this.flightsTableAdapter.Fill(this.airDataSet.Flights);
@@ -47,7 +39,6 @@ namespace main.aut
                 dataGridView1.Columns["BookingId"].Visible = true;
                 dataGridView1.Columns["PassengerId"].Visible = true;
                 dataGridView1.Columns["IsCompleted"].Visible = true;
-
                 SqlConnection conn = new SqlConnection(Connection.con);
                 try
                 {
@@ -80,7 +71,6 @@ namespace main.aut
                             }
                         }
                     }
-
                     reader.Close();
                     conn.Close();
                 }
@@ -92,7 +82,6 @@ namespace main.aut
                 isLoaded = true;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
